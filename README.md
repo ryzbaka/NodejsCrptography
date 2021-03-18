@@ -9,13 +9,13 @@ Exploring and understanding cryptography using Node.js.
     * Two Factor Authentication
 
 ## Crypto Libraries
-* Crypto : A built-in module in node.js
+* Crypto : A built-in module **in** node.js
     * Contains the `Cipher` and `Decipher` classes for encrypting and decrypting data respectively.
     * The `DiffieHellman` class is used for exchanching keys for assymetric cryptography.
     * The `ECDH`(Elliptic Curve Diffie Hellman) class uses an elliptic curve to create keys.
     * The `Hash` class generates hash digests of data. It transforms plaintext to fixed length random output.
     * `HMAC` is a class used for generating hash based message authentication codes. They're used to verify the identity of the sender and the integrity of the message.
-    * `Sign`/`Verify` classes are use for cryptographic signing.
+    * `Sign`/`Verify` classes are used for cryptographic signing.
     * Other various crypto methods line RNG (Random Number Generation).
 
 ## Protecting Passwords
@@ -45,3 +45,22 @@ Exploring and understanding cryptography using Node.js.
 * It doesn't matter if the attacker knows the salt for any particular hash, it's not a secret. Using a different salt for each password means the attacker can't precompute hashes using common values. With a different salt on each one, they would need to recompute any tables for every password which makes them useless.
 * Lets say that the attacker knows the value of the salt since they know how a library like bcrypt stores the salt in the hash. They would need to compute all the hashes in their rainbow table for that salt, this is very computationally expensive when compared to the process of precomputing all the hashes of common passwords using a hashing algorithm that doesn't use salts since the attacker would have to recompute hash values for their rainbow table for each individual password since the salt used to encrypt it is completely random.
 * `Hashes/bcryptDemo.js` demonstrates the working of salt based hashing algorithms using **bcrypt**. 
+
+## Protecting Data at Rest
+* Data at rest refers to data stored on disk. Files and databases have to be protected to prevent loss of confidentiality, integrity and availability.
+* Symmetric encryption is the best way to protect data at risk.
+* You encrypt the data and store it in disk; when required, the data is decrypted.
+* Only one key is used in symmetric encryption.
+* Node.js tools for symmetric encryption:
+  * `Crypto.createCipheriv` : Creates an instance of the cipher class. iv -> initialization vector.
+  * `Update` : Add data to cipher.
+  * `Final` : Encrypt data.
+* `Symmetric/aes.js` demonstrates symmetric encryption and decryption in Node.js .
+* Symmetric encryptions is only effective as long as the attacker does not have access to the keys.
+* A robust Key Management System (KMS) should be used:
+  * A key store is a piece of software the stores keys by encrypting them (using a master key).
+  * Keys should be rotated regularly.
+  * AWS Key Management service and Azure Keystore are great.
+  * But I'm cheap, so I'll use Vault by Hashicorp. 
+## Vault - Key Store
+* lmao
