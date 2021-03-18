@@ -61,6 +61,4 @@ Exploring and understanding cryptography using Node.js.
   * A key store is a piece of software the stores keys by encrypting them (using a master key).
   * Keys should be rotated regularly.
   * AWS Key Management service and Azure Keystore are great.
-  * But I'm cheap, so I'll use Vault by Hashicorp. 
-## Vault - Key Store
-* lmao
+  * But I'm cheap, so I'll probably end up using Vault by Hashicorp because its open source.
