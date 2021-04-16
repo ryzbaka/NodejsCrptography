@@ -62,3 +62,13 @@ Exploring and understanding cryptography using Node.js.
   * Keys should be rotated regularly.
   * AWS Key Management service and Azure Keystore are great.
   * But I'm cheap, so I'll probably end up using Vault by Hashicorp because its open source.
+
+## Protecting Data in Transit
+* The two main threats to data in transit are:
+  * Attacker can see the data being exchanged between two parties and/or changes it.
+  * Attacker impersonates one of the parties.
+* A common attack is the MITM attack.
+* Asymmetric encryption ses 2 keys, one to encrypt a message and another to decrypt it.
+* HMAC(Hash Based Message Authentication Code) helps validate contents of the message. It creates a keyed hash from the contents of the data.
+* Digital Signatures use both asymmetric encryption and hashing. Hash message->encrypt using key1->send->decrypt using key2->recalculate hash to verify integrity of received doc.
+* 
